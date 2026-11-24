@@ -4,7 +4,7 @@ An anonymous, public platform where citizens report city and environmental probl
 (potholes, water leakage, dirty water, garbage and more) with a live-camera photo and GPS.
 Reports stay public until an official fixes them and proves it with a verified "after" photo.
 
-**Live demo:** [paste your GitHub Pages link here]
+**Live demo:**  https://hari-haran-81189.github.io/urban-grievance/
 
 ## Features
 - Camera-only reporting with GPS (no gallery uploads, to reduce fake reports)
