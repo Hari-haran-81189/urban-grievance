@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Officer dashboard – Urban Grievance</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-role="local">
+  <header class="topbar">🏙️ Officer dashboard <a id="logoutBtn" class="toplink" href="#">Log out</a></header>
+
+  <main class="container wide">
+    <p id="homeMsg" class="message">Loading…</p>
+
+    <div id="dash" hidden>
+      <!-- Welcome banner -->
+      <section class="welcome">
+        <div>
+          <h1 id="offName"></h1>
+          <div id="offLine1"></div>
+          <div id="offLine2"></div>
+        </div>
+        <div class="welcome-right" id="topProblem"></div>
+      </section>
+
+      <!-- Numbers -->
+      <section class="stats">
+        <div class="stat-card"><div class="stat-num" id="statTotal">0</div><div class="stat-label">Total reports</div></div>
+        <div class="stat-card amber"><div class="stat-num" id="statPending">0</div><div class="stat-label">Pending</div></div>
+        <div class="stat-card blue"><div class="stat-num" id="statProgress">0</div><div class="stat-label">In progress</div></div>
+        <div class="stat-card green"><div class="stat-num" id="statSolved">0</div><div class="stat-label">Solved</div></div>
+      </section>
+
+      <div class="progress-wrap">
+        <div>Completion rate: <b id="rate">0%</b></div>
+        <div class="progress-bar"><div id="rateFill"></div></div>
+      </div>
+
+      <!-- Charts -->
+      <section class="charts">
+        <div class="chart-box"><h3>Task status</h3>
+          <div class="chart-canvas-wrap"><canvas id="statusChart"></canvas></div></div>
+        <div class="chart-box"><h3>Most repeated problems</h3>
+          <div class="chart-canvas-wrap"><canvas id="catChart"></canvas></div></div>
+      </section>
+
+      <!-- Task list -->
+      <h2>Your tasks</h2>
+      <div class="tabs">
+        <button class="tab active" data-filter="all" type="button">All</button>
+        <button class="tab" data-filter="pending" type="button">Pending</button>
+        <button class="tab" data-filter="in_progress" type="button">In progress</button>
+        <button class="tab" data-filter="solved" type="button">Solved</button>
+      </div>
+      <div id="taskList"></div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/official.js"></script>
+  <script src="js/officer-dashboard.js"></script>
+</body>
+</html>

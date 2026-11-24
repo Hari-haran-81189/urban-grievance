@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Local officer – Urban Grievance</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-role="higher">
+  <header class="topbar">🏙️ Higher authority <a id="logoutBtn" class="toplink" href="#">Log out</a></header>
+
+  <main class="container">
+    <p id="homeMsg" class="message">Loading…</p>
+
+    <section id="profileBox" class="info" hidden>
+      <h2 id="offName"></h2>
+      <div id="offTitle"></div>
+      <div id="offDept"></div>
+      <div id="offArea"></div>
+      <div id="offCats"></div>
+    </section>
+
+    <div class="placeholder">📊 Your dashboard will appear here in the next steps.</div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/official.js"></script>
+  <script src="js/official-home.js"></script>
+</body>
+</html>

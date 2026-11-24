@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Official login – Urban Grievance</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar"><a href="index.html" class="back">←</a> Official login</header>
+
+  <main class="container">
+    <p>For government officials only. Accounts are created and activated by the administrator.</p>
+
+    <form id="loginForm" class="details">
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="username" required />
+
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" required />
+
+      <p id="loginMsg" class="message"></p>
+      <button id="loginBtn" class="btn" type="submit">Log in</button>
+    </form>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/official.js"></script>
+  <script src="js/official-login.js"></script>
+</body>
+</html>

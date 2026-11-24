@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Urban Grievance</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">🏙️ Urban Grievance</header>
+
+  <main class="container">
+    <p>Anonymous reporting of city and environmental problems: roads, water, drainage, garbage and more.</p>
+    <a class="btn" href="report.html">📷 Report an issue</a>
+    <a class="btn secondary" href="map.html">🗺️ View public map</a>
+    <a class="btn secondary" href="feed.html">📋 View feed</a>
+    <a class="btn secondary" href="official-login.html">🔐 Official login</a>
+
+    <!-- Connection test: shows if Supabase is set up correctly -->
+    <div id="status" class="status">Checking connection…</div>
+  </main>
+
+  <!-- Supabase library (pinned version) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script>
+    // Test: ask Supabase for the current session (works even with no tables yet)
+    async function testConnection() {
+  const box = document.getElementById("status");
+  try {
+    // Read the department list from the real database
+    const { data, error } = await db.from("departments").select("category,label");
+    if (error) throw error;
+    box.textContent = "✅ Database OK – " + data.length + " categories loaded";
+    box.classList.add("ok");
+  } catch (e) {
+    box.textContent = "❌ Database error. Open the Console (F12).";
+    box.classList.add("bad");
+    console.error(e);
+  }
+}
+    testConnection();
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Report an issue – Urban Grievance</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar"><a href="index.html" class="back">←</a> Report an issue</header>
+
+  <main class="container">
+    <div class="warning">⚠️ Please avoid capturing faces and vehicle number plates.</div>
+
+    <!-- Camera area: live video, then the captured photo replaces it -->
+    <div class="camera-box">
+      <video id="video" autoplay playsinline muted hidden></video>
+      <img id="preview" alt="Captured photo" hidden />
+      <canvas id="canvas" hidden></canvas>
+    </div>
+
+    <p id="message" class="message"></p>
+
+    <div class="buttons">
+      <button id="startBtn" class="btn">📷 Open camera</button>
+      <button id="captureBtn" class="btn" hidden>Capture photo</button>
+      <button id="retakeBtn" class="btn secondary" hidden>Retake</button>
+    </div>
+
+    <!-- Location details appear after a photo is captured -->
+    <div id="info" class="info" hidden></div>
+
+        <!-- Form appears after a photo is captured -->
+    <section id="detailsBox" class="details" hidden>
+      <h2>Describe the problem</h2>
+
+      <label for="category">Category</label>
+      <select id="category"><option value="">Loading…</option></select>
+
+      <label for="title">Title <span class="count" id="titleCount">0/100</span></label>
+      <input id="title" type="text" maxlength="100" placeholder="e.g. Plastic waste dumped in lake" />
+
+      <label for="description">Description <span class="count" id="descCount">0/1000</span></label>
+      <textarea id="description" rows="5" maxlength="1000"
+        placeholder="What is the problem? Since when? Who or what is affected?"></textarea>
+
+      <p class="note">🔒 Your name and personal details are never shown. Reports are public and
+        marked "citizen-reported, unverified".</p>
+
+      <button id="submitBtn" class="btn">Submit report</button>
+    </section>
+
+        <!-- Shown when similar reports already exist nearby -->
+    <section id="nearbyBox" class="nearby" hidden>
+      <h2>Is this the same issue?</h2>
+      <p>Similar reports already exist within about 50 m. If yours is the same problem, support it
+         instead of creating a duplicate, so it gets more visibility.</p>
+      <div id="nearbyList"></div>
+      <button id="newIssueBtn" class="btn secondary" type="button">No, this is a new issue</button>
+    </section>
+
+    <!-- Shown after supporting an existing report -->
+    <section id="supportBox" class="success" hidden>
+      <h2>✅ Support added</h2>
+      <p id="supportText"></p>
+      <a id="supportLink" class="btn" href="#">View the report</a>
+      <a class="btn secondary" href="index.html">Back to home</a>
+    </section>
+
+    <!-- Shown after a successful submit -->
+    <section id="successBox" class="success" hidden>
+      <h2>✅ Report submitted</h2>
+      <p>Thank you. Your report is now public.</p>
+      <a class="btn" href="index.html">Back to home</a>
+      <a class="btn secondary" href="report.html">Report another</a>
+    </section>
+  </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/report.js"></script>
+    <script src="js/submit.js"></script>
+</body>
+</html>

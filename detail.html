@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Report details – Urban Grievance</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a href="feed.html" class="back">←</a> Report details
+    <a class="toplink" href="map.html">🗺️ Map</a>
+  </header>
+
+  <main class="container">
+    <p id="loadMsg" class="message">Loading…</p>
+
+    <article id="report" hidden>
+      <img id="photo" class="detail-photo" alt="Photo of the problem" />
+      <button id="revealBtn" class="btn secondary" type="button" hidden>👁 Show original photo</button>
+      <p id="flagNotice" class="flag-notice" hidden></p>
+
+      <h1 id="title"></h1>
+      <span id="badge" class="badge"></span>
+
+      <div class="meta">
+        <div id="category"></div>
+        <div id="reporters"></div>
+        <div id="days"></div>
+        <div id="date"></div>
+      </div>
+
+      <h2>Description</h2>
+      <p id="description" class="desc"></p>
+
+      <!-- Likes / dislikes (one vote per device) -->
+      <div class="votes">
+        <button id="likeBtn" class="vote-btn">👍 <span id="likeCount">0</span></button>
+        <button id="dislikeBtn" class="vote-btn">👎 <span id="dislikeCount">0</span></button>
+      </div>
+      <button id="flagBtn" class="flag-btn" type="button">🚩 Report this photo</button>
+      <p id="flagMsg" class="message"></p>
+
+      <h2>Location</h2>
+      <div id="miniMap"></div>
+      <a id="mapLink" class="maplink">📍 Open on full map</a>
+
+      <!-- Filled in Steps 9-10 -->
+      <h2>Fix proof</h2>
+      <div class="placeholder" id="fixBox">No "after" photo has been uploaded by an authority yet.</div>
+      <div id="afterList"></div>
+      <p id="fixNotice" class="note" hidden></p>
+
+      <!-- Only shown to the right official -->
+      <section id="uploadBox" class="upload-box" hidden>
+        <h3>🛠️ Upload fix proof (officials only)</h3>
+        <p>Stand at the original spot and match the camera angle. Live camera only.</p>
+        <video id="fixVideo" class="fix-media" autoplay playsinline muted hidden></video>
+        <img id="fixPreview" class="fix-media" alt="After photo preview" hidden />
+        <canvas id="fixCanvas" hidden></canvas>
+        <p id="fixMsg" class="message"></p>
+        <div class="buttons">
+          <button id="fixStartBtn" class="btn" type="button">📷 Open camera</button>
+          <button id="fixCaptureBtn" class="btn" type="button" hidden>Capture</button>
+          <button id="fixRetakeBtn" class="btn secondary" type="button" hidden>Retake</button>
+          <button id="fixSubmitBtn" class="btn" type="button" hidden>Submit fix proof</button>
+        </div>
+      </section>
+
+      <p class="note">Citizen-reported, unverified information.</p>
+    </article>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/official.js"></script>
+  <script src="js/fixproof.js"></script>
+  <script src="js/detail.js"></script>
+</body>
+</html>

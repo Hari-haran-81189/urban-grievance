@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feed – Urban Grievance</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="back">←</a> Feed
+    <a class="toplink" href="map.html">🗺️ Map</a>
+  </header>
+
+  <main class="container">
+    <div class="filters">
+      <select id="fCategory"><option value="">All categories</option></select>
+      <select id="fStatus">
+        <option value="">All statuses</option>
+        <option value="unsolved">Unsolved</option>
+        <option value="done">Solved</option>
+      </select>
+      <select id="fSort">
+        <option value="newest">Newest first</option>
+        <option value="severity">Most reported</option>
+        <option value="likes">Most liked</option>
+        <option value="oldest">Longest unresolved</option>
+      </select>
+    </div>
+
+    <p id="feedMessage" class="message"></p>
+    <div id="list"></div>
+    <button id="moreBtn" class="btn secondary" hidden>Load more</button>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/feed.js"></script>
+</body>
+</html>
