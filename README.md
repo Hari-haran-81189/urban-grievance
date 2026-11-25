@@ -25,6 +25,13 @@ HTML, CSS, JavaScript, Supabase (database, storage, login), Leaflet + OpenStreet
 | Higher authority (roads) | roads.higher@demo.test | Demo@12345 |
 | Local officer (water) | water.local@demo.test | Demo@12345 |
 
+## Future plans
+- Deadlines per category, private accountability points and automatic escalation for overdue issues
+- Emergency alerts for reports near schools, hospitals and water sources (OpenStreetMap data)
+- Automatic email/SMS notifications to departments and anonymous status tracking for reporters
+- AI: automatic face/number-plate blur, before/after angle matching, smarter duplicate detection
+- Tamil language support, installable mobile app (PWA), official ward boundaries, admin panel
+
 ## Team
 4-idiots
 
