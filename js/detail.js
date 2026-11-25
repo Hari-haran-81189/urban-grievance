@@ -29,7 +29,7 @@ async function loadReport() {
   }
 
   const { data: r, error } = await db.from("reports")
-    .select("id,title,category,description,lat,lng,photo_path,status,severity,likes,dislikes,flag_count,created_at")
+    .select("id,title,category,description,lat,lng,photo_path,status,severity,likes,dislikes,flag_count,progress,created_at")
     .eq("id", reportId)
     .maybeSingle();
 
@@ -61,8 +61,9 @@ async function loadReport() {
   document.getElementById("title").textContent = r.title;
 
   const badge = document.getElementById("badge");
-  badge.textContent = r.status === "done" ? "Solved" : "Unsolved";
-  badge.className = "badge " + (r.status === "done" ? "green" : "red");
+  const pp = publicProgress(r);
+  badge.textContent = pp.label;
+  badge.className = "badge " + pp.cls;
 
   document.getElementById("category").textContent = "📂 " + categoryLabel;
   document.getElementById("reporters").textContent =

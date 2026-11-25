@@ -95,8 +95,9 @@ function buildCard(r, myVote) {
   body.appendChild(title);
 
   const badge = document.createElement("span");
-  badge.className = "badge " + (r.status === "done" ? "green" : "red");
-  badge.textContent = r.status === "done" ? "Solved" : "Unsolved";
+    const pp = publicProgress(r);
+  badge.className = "badge " + pp.cls;
+  badge.textContent = pp.label;
   body.appendChild(badge);
 
   const addLine = (text) => {
@@ -140,7 +141,7 @@ async function loadReports(reset) {
   const sort = fSort.value;
 
   let q = db.from("reports")
-     .select("id,title,category,status,severity,likes,dislikes,flag_count,photo_path,created_at");
+    .select("id,title,category,status,severity,likes,dislikes,flag_count,progress,photo_path,created_at");
 
   if (category) q = q.eq("category", category);
   if (status) q = q.eq("status", status);

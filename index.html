@@ -3,43 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Urban Grievance</title>
+  <title>Urban Grievance – Report. Make it public. Get it fixed.</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏙️</text></svg>" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header class="topbar">🏙️ Urban Grievance</header>
+  <!-- Top menu -->
+  <nav class="site-nav">
+    <a class="brand" href="index.html">🏙️ Urban Grievance</a>
+    <div class="nav-links">
+      <a href="report.html">Report</a>
+      <a href="map.html">Map</a>
+      <a href="feed.html">Feed</a>
+      <a href="official-login.html" class="nav-login">Official login</a>
+    </div>
+  </nav>
 
-  <main class="container">
-    <p>Anonymous reporting of city and environmental problems: roads, water, drainage, garbage and more.</p>
-    <a class="btn" href="report.html">📷 Report an issue</a>
-    <a class="btn secondary" href="map.html">🗺️ View public map</a>
-    <a class="btn secondary" href="feed.html">📋 View feed</a>
-    <a class="btn secondary" href="official-login.html">🔐 Official login</a>
+  <!-- Hero banner -->
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>Report. Make it public. <span>Get it fixed.</span></h1>
+      <p>Spot a pothole, a leaking pipe or dirty water? Report it anonymously with your camera.
+         Every issue stays public until an official fixes it and proves it.</p>
+      <div class="hero-buttons">
+        <a class="btn-hero" href="report.html">📷 Report an issue</a>
+        <a class="btn-hero ghost" href="map.html">🗺️ View public map</a>
+      </div>
+    </div>
+  </header>
 
-    <!-- Connection test: shows if Supabase is set up correctly -->
-    <div id="status" class="status">Checking connection…</div>
-  </main>
+  <!-- Live counters -->
+  <section class="counters">
+    <div class="counter-card"><div class="counter-num" id="cTotal">0</div><div class="counter-label">Issues reported</div></div>
+    <div class="counter-card green"><div class="counter-num" id="cSolved">0</div><div class="counter-label">Solved</div></div>
+    <div class="counter-card red"><div class="counter-num" id="cPending">0</div><div class="counter-label">Still pending</div></div>
+    <div class="counter-card"><div class="counter-num" id="cCitizens">0</div><div class="counter-label">Citizens involved</div></div>
+  </section>
 
-  <!-- Supabase library (pinned version) -->
+  <!-- How it works -->
+  <section class="land-section">
+    <h2>How it works</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-icon">📷</div>
+        <h3>1. Capture live</h3>
+        <p>Take a photo with your camera. The GPS location is added automatically. No gallery uploads, so no fake reports.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-icon">🌐</div>
+        <h3>2. Public and anonymous</h3>
+        <p>Your name is never shown. Every issue is visible to everyone, so it cannot be ignored. Repeat reports add weight.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-icon">🛠️</div>
+        <h3>3. Fixed and proved</h3>
+        <p>The responsible official fixes it and uploads a verified "after" photo from the same spot. Only then is it marked Solved.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest reports -->
+  <section class="land-section">
+    <h2>Latest reports</h2>
+    <div id="recentGrid" class="recent-grid"><p>Loading…</p></div>
+    <p class="see-all"><a href="feed.html">See all reports →</a></p>
+  </section>
+
+  <!-- For officials -->
+  <section class="official-band">
+    <h2>For government officials</h2>
+    <p>Log in to see the issues in your area, navigate to them, and upload proof of the fix.</p>
+    <a class="btn" href="official-login.html">🔐 Official login</a>
+  </section>
+
+  <footer class="site-footer">
+    Citizen-reported, unverified information · Student prototype · Made by 4-idiots
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
   <script src="js/config.js"></script>
-  <script>
-    // Test: ask Supabase for the current session (works even with no tables yet)
-    async function testConnection() {
-  const box = document.getElementById("status");
-  try {
-    // Read the department list from the real database
-    const { data, error } = await db.from("departments").select("category,label");
-    if (error) throw error;
-    box.textContent = "✅ Database OK – " + data.length + " categories loaded";
-    box.classList.add("ok");
-  } catch (e) {
-    box.textContent = "❌ Database error. Open the Console (F12).";
-    box.classList.add("bad");
-    console.error(e);
-  }
-}
-    testConnection();
-  </script>
+  <script src="js/common.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>

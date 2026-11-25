@@ -51,3 +51,11 @@ function haversineMeters(lat1, lng1, lat2, lng2) {
             Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin(dLng / 2) ** 2;
   return 2 * R * Math.asin(Math.min(1, Math.sqrt(a)));
 }
+
+// Public progress label + badge colour for a report (New / Acknowledged / In progress / Solved)
+function publicProgress(r) {
+  if (r.status === "done") return { label: "Solved", cls: "green" };
+  if (r.progress === "acknowledged") return { label: "Acknowledged", cls: "amber" };
+  if (r.progress === "in_progress") return { label: "In progress", cls: "blue" };
+  return { label: "New", cls: "red" };
+}

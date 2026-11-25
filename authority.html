@@ -3,30 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Local officer – Urban Grievance</title>
+  <title>Authority dashboard – Urban Grievance</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏙️</text></svg>" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body data-role="higher">
-  <header class="topbar">🏙️ Higher authority <a id="logoutBtn" class="toplink" href="#">Log out</a></header>
+  <header class="topbar">🏙️ Authority dashboard <a id="logoutBtn" class="toplink" href="#">Log out</a></header>
 
-  <main class="container">
+  <main class="container wide">
     <p id="homeMsg" class="message">Loading…</p>
 
-    <section id="profileBox" class="info" hidden>
-      <h2 id="offName"></h2>
-      <div id="offTitle"></div>
-      <div id="offDept"></div>
-      <div id="offArea"></div>
-      <div id="offCats"></div>
-    </section>
+    <div id="dash" hidden>
+      <section class="welcome">
+        <div>
+          <h1 id="offName"></h1>
+          <div id="offLine1"></div>
+          <div id="offLine2"></div>
+        </div>
+        <div class="welcome-right" id="topProblem"></div>
+      </section>
 
-    <div class="placeholder">📊 Your dashboard will appear here in the next steps.</div>
+      <section class="stats">
+        <div class="stat-card"><div class="stat-num" id="statTotal">0</div><div class="stat-label">Total reports</div></div>
+        <div class="stat-card amber"><div class="stat-num" id="statPending">0</div><div class="stat-label">Pending</div></div>
+        <div class="stat-card red"><div class="stat-num" id="statOverdue">0</div><div class="stat-label">Waiting 7+ days</div></div>
+        <div class="stat-card green"><div class="stat-num" id="statSolved">0</div><div class="stat-label">Solved</div></div>
+      </section>
+
+      <div class="progress-wrap">
+        <div>Completion rate: <b id="rate">0%</b></div>
+        <div class="progress-bar"><div id="rateFill"></div></div>
+      </div>
+
+      <section class="charts">
+        <div class="chart-box"><h3>Task status</h3>
+          <div class="chart-canvas-wrap"><canvas id="statusChart"></canvas></div></div>
+        <div class="chart-box"><h3>Most repeated problems</h3>
+          <div class="chart-canvas-wrap"><canvas id="catChart"></canvas></div></div>
+      </section>
+
+      <h2 class="section-title">🔥 Most problematic areas</h2>
+      <div class="table-wrap">
+        <table class="team-table">
+          <thead><tr><th>#</th><th>Area</th><th>Officer</th><th>Total</th><th>Pending</th><th>Solved</th><th>Longest wait</th></tr></thead>
+          <tbody id="teamBody"></tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">🗺️ Hotspot map</h2>
+      <div id="hotMap" class="hot-map"></div>
+      <p class="map-note">Circles are officer zones (red = 5+ pending, amber = 2–4, green = fewer). Dots are reports: red unsolved, green solved.</p>
+
+      <h2 class="section-title">⏳ Oldest unresolved reports</h2>
+      <div id="oldList"></div>
+    </div>
   </main>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
   <script src="js/config.js"></script>
   <script src="js/common.js"></script>
   <script src="js/official.js"></script>
-  <script src="js/official-home.js"></script>
+  <script src="js/authority-dashboard.js"></script>
 </body>
 </html>
